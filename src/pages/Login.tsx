@@ -71,8 +71,7 @@ function Login({}: Props) {
   return (
     <>
       <Container size={420} mt={100}>
-        <span>admin@mail.com</span> <br />
-        <span>45968978</span>
+      
         <LoadingOverlay visible={visible} overlayBlur={2} />
         <Title
           align="center"
