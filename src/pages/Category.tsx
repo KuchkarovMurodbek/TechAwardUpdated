@@ -89,7 +89,7 @@ function Category() {
       }).catch((err)=>{
         console.log(err)
         if(err){
-          setDisableAdd(true)
+          setDisableAdd(false)
         }
       });
     getCategory();
@@ -121,7 +121,8 @@ function Category() {
 
       <div className={classes.parentdIv}>
         <Box w={300} p={10}>
-          <Input.Wrapper id="input-demo" label="Categoriya">
+          <Input.Wrapper id="input-demo" label="Categoriya"
+             description={!categoryInput?'Firstly write category into input in order to save':''}>
             <Input
               id="input-demo"
               placeholder="Categoriya qo'shish"
@@ -130,7 +131,7 @@ function Category() {
               onChange={(e) => setCategoryInput(e.target.value)}
             />
           </Input.Wrapper>
-          <Button mt={4} color="dark" onClick={CreateCategory} disabled={disableAdd}>
+          <Button mt={4} color="dark" onClick={CreateCategory} disabled={!categoryInput?true :disableAdd}>
             Qo'shish
           </Button>
         </Box>

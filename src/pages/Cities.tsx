@@ -133,16 +133,18 @@ function Cities() {
       <Navbarlogout />
       <div className={classes.parentdIv}>
         <Box w={300} p={10}>
-          <Input.Wrapper id="input-demo" label="Shahar">
+          <Input.Wrapper id="input-demo" label="Shahar"  
+           description={!handleInput?'Firtsly write cities into input due to saving data':''}>
             <Input
               id="input-demo"
               placeholder="Shaharlar qo'shish"
+           
               name="name"
               value={handleInput}
               onChange={handleInputChange}
             />
           </Input.Wrapper>
-          <Button mt={4} color="dark" onClick={CreateCity} disabled={disableAdd}>
+          <Button mt={4} color="dark" onClick={CreateCity} disabled={!handleInput?true: disableAdd}>
             Qo'shish
           </Button>
         </Box>
