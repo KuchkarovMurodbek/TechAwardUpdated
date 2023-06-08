@@ -1,7 +1,7 @@
 import { Flex, Button, Loader } from "@mantine/core";
 import { useLocalStorage } from "@mantine/hooks";
-import {  SignOut } from "@phosphor-icons/react";
-import { useState } from "react";
+import { SignOut } from "@phosphor-icons/react";
+import {  useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Navbarlogout() {
@@ -17,23 +17,25 @@ function Navbarlogout() {
     key: "adminname",
     defaultValue: "",
   });
- const [logLoad,setLoad]=useState(false)
+  const [logLoad, setLoad] = useState(false);
   const navigate = useNavigate();
-  
+
   function LogoutFunction() {
-    setLoad(true)
-    setTimeout(()=>{
-      setLoad(false)
-      setToken("");
-      setUserLength('')
-      setAdminname('')
+    setLoad(true);
+    setTimeout(() => {
       navigate("/");
-    },2000)
-   
+      setLoad(false);
+      setUserLength("");
+      setAdminname("");
+      
+      setToken("");
+      window.location.reload();
+    }, 2000);
   }
+
+  
   return (
     <Flex bg={"#002120"} py={10} pr={5} justify={"end"}>
-    
       <Button
         onClick={LogoutFunction}
         variant="filled"
@@ -42,7 +44,12 @@ function Navbarlogout() {
         size="xs"
         uppercase
       >
-       {logLoad?<Loader color="light" size="sm" variant="bars" mr={1} />:<SignOut size={20} weight="bold" />}  Logout
+        {logLoad ? (
+          <Loader color="light" size="sm" variant="bars" mr={1} />
+        ) : (
+          <SignOut size={20} weight="bold" />
+        )}{" "}
+        Logout
       </Button>
     </Flex>
   );

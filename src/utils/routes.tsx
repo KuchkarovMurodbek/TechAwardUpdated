@@ -22,7 +22,6 @@ export const publicRoutes = createBrowserRouter([
 export const privateRoutes = createBrowserRouter([
   {
     path: "/",
-
     errorElement: <ErrorPage />,
     element: <Dashboard />,
   },
@@ -45,14 +44,13 @@ export const privateRoutes = createBrowserRouter([
   {
     path: "/activepost/:id",
     element: <ActivePostId />,
-  },
 
+  },
   {
     path: "/cities",
 
     element: <Cities />,
   },
-  
   {
     path: "/category",
 
