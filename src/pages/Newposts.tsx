@@ -27,21 +27,23 @@ function NewPost({}: Props) {
   const [search, setSearch] = useState("");
   const [filtervalue, setFilterValue] = useState<string | null>();
   const [IsTrue, setIsTrue] = useState(false);
-  const  [ASC_DESC, setASC_DESC]=useState<'ASC' | 'DESC'>('ASC')
-  const [totalPost,setTotalPost]=useState(null)
+  const [ASC_DESC, setASC_DESC] = useState<"ASC" | "DESC">("ASC");
+  const [totalPost, setTotalPost] = useState(null);
   const fetchData = async () => {
     setIsLoading(true);
 
     if (filtervalue) {
       await posts
-        .getPostFiltered(search, activePage, filtervalue,ASC_DESC)
+        .getPostFiltered(search, activePage, filtervalue, ASC_DESC)
         .then((res) => {
           if (res) {
             console.log(res.data);
             setPost(res.data.results);
             setIsLoading(false);
-            setTotalCount(Math.ceil(res.data.passive_count / res.data.pageSize));
-            setTotalPost(res.data.passive_count)
+            setTotalCount(
+              Math.ceil(res.data.passive_count / res.data.pageSize)
+            );
+            setTotalPost(res.data.passive_count);
           }
         })
         .catch((err) => {
@@ -56,8 +58,10 @@ function NewPost({}: Props) {
             console.log(res.data);
             setPost(res.data.results);
             setIsLoading(false);
-            setTotalCount(Math.ceil(res.data.passive_count / res.data.pageSize));
-            setTotalPost(res.data.passive_count)
+            setTotalCount(
+              Math.ceil(res.data.passive_count / res.data.pageSize)
+            );
+            setTotalPost(res.data.passive_count);
           }
         })
         .catch((err) => {
@@ -69,29 +73,22 @@ function NewPost({}: Props) {
 
   useEffect(() => {
     fetchData();
-  }, [activePage, search, filtervalue,ASC_DESC]);
+  }, [activePage, search, filtervalue, ASC_DESC]);
 
-
-const functionAscDesc = (true_false:boolean)=>{
-  if(true_false===true){
-    setASC_DESC('DESC')
-  }else{
-    setASC_DESC('ASC')
-  }
-  setIsTrue(true_false)
-}
+  const functionAscDesc = (true_false: boolean) => {
+    if (true_false === true) {
+      setASC_DESC("DESC");
+    } else {
+      setASC_DESC("ASC");
+    }
+    setIsTrue(true_false);
+  };
 
   return (
     <Layout>
       <Navbarlogout />
-      <Flex p={10} align={"center"}>
-        <Input
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          icon={<MagnifyingGlass size={20} />}
-          placeholder="Search"
-          size="xs"
-        />
+      <Flex p={10} align={"center"} justify={'space-between'}>
+        <Flex align={'center'}>
         <Badge color="teal" size="lg" radius="xs" variant="light" mx={3}>
           Total:{totalPost}
         </Badge>
@@ -105,19 +102,39 @@ const functionAscDesc = (true_false:boolean)=>{
             { value: "created_at", label: "created_at" },
           ]}
         />
+
         {IsTrue ? (
-        
-         
-           <ActionIcon mx={2} color="dark" size="lg" radius="xl" variant="filled" onClick={()=>functionAscDesc(false)}>
-          <ArrowUp size={20} />
-         </ActionIcon>
+          <ActionIcon
+            mx={2}
+            color="dark"
+            size="lg"
+            radius="xl"
+            variant="filled"
+            onClick={() => functionAscDesc(false)}
+          >
+            <ArrowUp size={20} />
+          </ActionIcon>
         ) : (
-          <ActionIcon mx={2} color="dark" size="lg" radius="xl" variant="filled" onClick={()=>functionAscDesc(true)}>
-         <ArrowDown size={20}/>
-         </ActionIcon>
-       
+          <ActionIcon
+            mx={2}
+            color="dark"
+            size="lg"
+            radius="xl"
+            variant="filled"
+            onClick={() => functionAscDesc(true)}
+          >
+            <ArrowDown size={20} />
+          </ActionIcon>
         )}
-        
+        </Flex>
+
+        <Input
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          icon={<MagnifyingGlass size={20} />}
+          placeholder="Search"
+          size="xs"
+        />
       </Flex>
       {isLoading ? (
         <Flex align={"center"} justify={"center"} h={200} w={900}>

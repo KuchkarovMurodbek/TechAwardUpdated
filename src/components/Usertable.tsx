@@ -96,8 +96,8 @@ const getOneUserById = async (id: number) => {
         h={470}
         onScrollPositionChange={({ y }) => setScrolled(y !== 0)}
       >
-        <Center w={640} mx="auto" pt={15}>
-          <Table miw={800} striped highlightOnHover withBorder>
+        <Center  style={{width:'100%'}} mx="auto" pt={20} px={8}>
+          <Table style={{width:'100%'}} striped highlightOnHover withBorder>
             <thead
               style={{ color: "#fff" }}
               className={cx(classes.header, { [classes.scrolled]: scrolled })}
@@ -131,7 +131,7 @@ const getOneUserById = async (id: number) => {
           </Table>
         </Center>
       </ScrollArea>
-      <Flex justify={"center"} pt={10}>
+      <Flex justify={"center"} pt={15}>
         <Pagination color="dark" radius={"lg"} value={activePage} onChange={setPage} total={totalCount} />
       </Flex>
       <Drawer

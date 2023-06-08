@@ -25,22 +25,22 @@ function ActivePost() {
   const [search, setSearch] = useState("");
   const [filtervalue, setFilterValue] = useState<string | null>();
   const [IsTrue, setIsTrue] = useState(false);
-  const  [ASC_DESC, setASC_DESC]=useState<'ASC' | 'DESC'>('ASC')
-  const [totalPost,setTotalPost]=useState(null)
-
+  const [ASC_DESC, setASC_DESC] = useState<"ASC" | "DESC">("ASC");
+  const [totalPost, setTotalPost] = useState(null);
 
   const fetchData = async () => {
     setIsLoading(true);
 
-
-    if(filtervalue){
-        await posts.getActivePostFiltered(search, activePage, filtervalue,ASC_DESC).then((res) => {
+    if (filtervalue) {
+      await posts
+        .getActivePostFiltered(search, activePage, filtervalue, ASC_DESC)
+        .then((res) => {
           if (res) {
             console.log(res.data);
             setPost(res.data.results);
             setIsLoading(false);
             setTotalCount(Math.ceil(res.data.active_count / res.data.pageSize));
-            setTotalPost(res.data.active_count)
+            setTotalPost(res.data.active_count);
           }
         })
         .catch((err) => {
@@ -56,44 +56,35 @@ function ActivePost() {
             setPost(res.data.results);
             setIsLoading(false);
             setTotalCount(Math.ceil(res.data.active_count / res.data.pageSize));
-            setTotalPost(res.data.active_count)
+            setTotalPost(res.data.active_count);
           }
         })
         .catch((err) => {
           console.log(err);
           setIsLoading(false);
         });
-      }
-    
-
+    }
   };
 
   useEffect(() => {
     fetchData();
-  }, [search, activePage,filtervalue,ASC_DESC]);
+  }, [search, activePage, filtervalue, ASC_DESC]);
 
-
-  const functionAscDesc = (true_false:boolean)=>{
-    if(true_false===true){
-      setASC_DESC('DESC')
-    }else{
-      setASC_DESC('ASC')
+  const functionAscDesc = (true_false: boolean) => {
+    if (true_false === true) {
+      setASC_DESC("DESC");
+    } else {
+      setASC_DESC("ASC");
     }
-    setIsTrue(true_false)
-  }
+    setIsTrue(true_false);
+  };
 
   return (
     <Layout>
       <Navbarlogout />
-      <Flex p={10} align={"center"}>
-        <Input
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          icon={<MagnifyingGlass size={20} />}
-          placeholder="Your email"
-          size="xs"
-        />
-        <Badge color="cyan" size="lg" radius="xs" variant="light" mx={2}>
+      <Flex p={10} align={"center"} justify={'space-between'}>
+       <Flex align={'center'}>
+       <Badge color="cyan" size="lg" radius="xs" variant="light" mx={2}>
           Total:{totalPost}
         </Badge>
         <Select
@@ -131,6 +122,15 @@ function ActivePost() {
             <ArrowDown size={20} />
           </ActionIcon>
         )}
+       </Flex>
+
+        <Input
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          icon={<MagnifyingGlass size={20} />}
+          placeholder="Search"
+          size="xs"
+        />
       </Flex>
       {isLoading ? (
         <Flex align={"center"} justify={"center"} h={200} w={900}>
