@@ -46,7 +46,7 @@ export default function Postcard({ data }: { data: typePost[] }) {
   const navigate = useNavigate();
 
   return (
-    <Container py="xl">
+    <Container fluid py={10} bg={'#ECEEFF'}>
       <SimpleGrid cols={1} breakpoints={[{ maxWidth: "sm", cols: 1 }]}>
         {data.map((post) => (
           <Card

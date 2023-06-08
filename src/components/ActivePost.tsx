@@ -14,6 +14,7 @@ import {
     card: {
       transition: "transform 150ms ease, box-shadow 150ms ease",
       boxShadow: theme.shadows.md,
+     
       cursor: "pointer",
       "&:hover": {
         transform: "scale(1.01)",
@@ -63,7 +64,7 @@ import {
     const navigate = useNavigate();
   
     return (
-      <Container py="xl">
+      <Container fluid py={10}  bg={'#ECEEFF'}>
         <SimpleGrid cols={2} breakpoints={[{ maxWidth: "sm", cols: 1 }]}>
           {data.map((post) => (
             <Card

@@ -87,9 +87,9 @@ function NewPost({}: Props) {
   return (
     <Layout>
       <Navbarlogout />
-      <Flex p={10} align={"center"} justify={'space-between'}>
+      <Flex bg={"#F1F1F3"}  p={10} align={"center"} justify={'space-between'}>
         <Flex align={'center'}>
-        <Badge color="teal" size="lg" radius="xs" variant="light" mx={3}>
+        <Badge color="cyan" size="lg" radius="xs" variant="filled" mx={3}>
           Total:{totalPost}
         </Badge>
         <Select
@@ -97,6 +97,7 @@ function NewPost({}: Props) {
           onChange={setFilterValue}
           placeholder="Filter by"
           clearable
+          size="xs"
           data={[
             { value: "title", label: "title" },
             { value: "created_at", label: "created_at" },
@@ -107,8 +108,8 @@ function NewPost({}: Props) {
           <ActionIcon
             mx={2}
             color="dark"
-            size="lg"
-            radius="xl"
+            size="md"
+           
             variant="filled"
             onClick={() => functionAscDesc(false)}
           >
@@ -118,8 +119,8 @@ function NewPost({}: Props) {
           <ActionIcon
             mx={2}
             color="dark"
-            size="lg"
-            radius="xl"
+            size="md"
+            
             variant="filled"
             onClick={() => functionAscDesc(true)}
           >

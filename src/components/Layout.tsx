@@ -10,6 +10,7 @@ import { useLocalStorage } from "@mantine/hooks";
 
 const useStyles = createStyles((theme) => ({
   parentdIv: {
+  
     display: "flex",
     "@media (max-width:476px)": {
       flexDirection: "column",
@@ -187,7 +188,7 @@ export const Layout = ({ children }: Props) => {
             </div>
         </Navbar.Section>
       </Navbar>
-     <div style={{ width: "100%", height: "100%" }}>{children}</div>
+     <div style={{ width: "100%", height: "100%"}}>{children}</div>
     </div>
   );
 };

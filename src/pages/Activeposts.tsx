@@ -82,47 +82,46 @@ function ActivePost() {
   return (
     <Layout>
       <Navbarlogout />
-      <Flex p={10} align={"center"} justify={'space-between'}>
-       <Flex align={'center'}>
-       <Badge color="cyan" size="lg" radius="xs" variant="light" mx={2}>
-          Total:{totalPost}
-        </Badge>
-        <Select
-          ml={2}
-          value={filtervalue}
-          onChange={setFilterValue}
-          placeholder="Filter by"
-          clearable
-          data={[
-            { value: "title", label: "title" },
-            { value: "created_at", label: "created_at" },
-          ]}
-        />
+      <Flex p={10} align={"center"} justify={"space-between"} bg={"#F1F1F3"}>
+        <Flex align={"center"}>
+          <Badge color="indigo" size="lg" radius="xs" variant="filled" mx={2}>
+            Total:{totalPost}
+          </Badge>
+          <Select
+            ml={2}
+            value={filtervalue}
+            onChange={setFilterValue}
+            placeholder="Filter by"
+            clearable
+            size="xs"
+            data={[
+              { value: "title", label: "title" },
+              { value: "created_at", label: "created_at" },
+            ]}
+          />
 
-        {IsTrue ? (
-          <ActionIcon
-            mx={2}
-            color="gray"
-            size="lg"
-            radius="xl"
-            variant="filled"
-            onClick={() => functionAscDesc(false)}
-          >
-            <ArrowUp size={20} />
-          </ActionIcon>
-        ) : (
-          <ActionIcon
-            mx={2}
-            color="gray"
-            size="lg"
-            radius="xl"
-            variant="filled"
-            onClick={() => functionAscDesc(true)}
-          >
-            <ArrowDown size={20} />
-          </ActionIcon>
-        )}
-       </Flex>
+          {IsTrue ? (
+            <ActionIcon
+              mx={2}
+              color="dark"
+              size="md"
+              variant="filled"
+              onClick={() => functionAscDesc(false)}
+            >
+              <ArrowUp size={20} />
+            </ActionIcon>
+          ) : (
+            <ActionIcon
+              mx={2}
+              color="dark"
+              size="md"
+              variant="filled"
+              onClick={() => functionAscDesc(true)}
+            >
+              <ArrowDown size={20} />
+            </ActionIcon>
+          )}
+        </Flex>
 
         <Input
           value={search}
