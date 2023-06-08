@@ -25,6 +25,7 @@ const useStyles = createStyles((theme) => ({
     marginTop: "10px",
     display: "flex",
     alignItems: "center",
+    justifyContent:'space-between',
     padding: `calc(${theme.spacing.xl} * 1)`,
     borderRadius: theme.radius.md,
     backgroundColor:
@@ -40,15 +41,14 @@ const useStyles = createStyles((theme) => ({
   },
 
   image: {
-    maxWidth: "30%",
-
-    [theme.fn.smallerThan("sm")]: {
+    maxWidth: "20%",
+  [theme.fn.smallerThan("sm")]: {
       maxWidth: "100%",
     },
   },
 
   body: {
-    paddingRight: `calc(${theme.spacing.xl} * 4)`,
+    paddingRight: `calc(${theme.spacing.xl} * 2)`,
 
     [theme.fn.smallerThan("sm")]: {
       paddingRight: 0,
@@ -66,7 +66,6 @@ const useStyles = createStyles((theme) => ({
   controls: {
     display: "flex",
     flexDirection: "column",
-
     marginTop: theme.spacing.sm,
   },
 
@@ -191,7 +190,7 @@ function PostId() {
 
   return (
     <Layout>
-      <Container py="xl">
+      <Container py="sm">
         <Flex>
           <Button
             leftIcon={<Rewind size={18} />}
@@ -259,7 +258,7 @@ function PostId() {
             ""
           )}
         </div>
-        <ScrollArea h={370}>
+        <ScrollArea h={270}>
           <Text
             fz="sm"
             dangerouslySetInnerHTML={{ __html: oneUser?.content }}

@@ -147,22 +147,6 @@ export const Layout = ({ children }: Props) => {
     
   ];
 
-  const mainLinks = links.map((link) => (
-    <UnstyledButton key={link.label} className={classes.mainLink}>
-      <NavLink to={link.link} className={classes.mainLinkInner}>
-        <span style={{ marginRight: "2px", color: `${link.color}` }}>
-          {link.icon}
-        </span>
-        <span>{link.label}</span>
-      </NavLink>
-
-      {link.notifications && (
-        <Badge size="sm" variant="filled" className={classes.mainLinkBadge}>
-          {link.notifications}
-        </Badge>
-      )}
-    </UnstyledButton>
-  ));
 
   return (
     <div className={classes.parentdIv}>
@@ -180,7 +164,27 @@ export const Layout = ({ children }: Props) => {
           />
         </Navbar.Section>
         <Navbar.Section className={classes.section}>
-          <div className={classes.mainLinks}>{mainLinks}</div>
+          <div className={classes.mainLinks}>
+            {
+              links.map((link) => (
+                <UnstyledButton key={link.label} className={classes.mainLink}>
+                  <NavLink to={link.link} className={classes.mainLinkInner}>
+                    <span style={{ marginRight: "2px", color: `${link.color}` }}>
+                      {link.icon}
+                    </span>
+                    <span>{link.label}</span>
+                  </NavLink>
+            
+                  {link.notifications && (
+                    <Badge size="sm" variant="filled" className={classes.mainLinkBadge}>
+                      {link.notifications}
+                    </Badge>
+                  )}
+                </UnstyledButton>
+              ))
+            }
+            
+            </div>
         </Navbar.Section>
       </Navbar>
      <div style={{ width: "100%", height: "100%" }}>{children}</div>

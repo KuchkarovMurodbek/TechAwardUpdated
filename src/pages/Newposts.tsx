@@ -129,7 +129,7 @@ const functionAscDesc = (true_false:boolean)=>{
         </ScrollArea>
       )}
 
-      <Center maw={400} h={60} mx="auto">
+      <Center maw={400} h={33} mx="auto">
         <Pagination
           color="dark"
           radius="xl"

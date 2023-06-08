@@ -51,7 +51,7 @@ export default function Postcard({ data }: { data: typePost[] }) {
         {data.map((post) => (
           <Card
             key={post.id}
-            p="md"
+            p="xs"
             radius="md"
             component="a"
             className={classes.card}
@@ -82,7 +82,7 @@ export default function Postcard({ data }: { data: typePost[] }) {
               {post ? (
                 <Image
                   src={`https://tech.nextlevelgroup.uz/${post.img}`}
-                  width={100}
+                  width={80}
                 />
               ) : (
                 ""
