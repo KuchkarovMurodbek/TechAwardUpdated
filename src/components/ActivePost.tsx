@@ -99,7 +99,7 @@ import {
                 </div>
               
                 <Image
-                  src={`http://tech.nextlevelgroup.uz/${post.img}`}
+                  src={`https://tech.nextlevelgroup.uz/${post.img}`}
                   width={100}
                   radius={10}
                 />

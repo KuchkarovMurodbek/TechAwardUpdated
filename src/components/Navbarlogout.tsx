@@ -24,10 +24,10 @@ function Navbarlogout() {
     setLoad(true)
     setTimeout(()=>{
       setLoad(false)
-      navigate("/");
       setToken("");
       setUserLength('')
       setAdminname('')
+      navigate("/");
     },2000)
    
   }

@@ -65,19 +65,7 @@ function ActivePost() {
         });
       }
     
-    // await posts
-    //   .getActivePost(search, activePage)
-    //   .then((res) => {
-    //     if (res) {
-    //       setPost(res.data.results);
-    //       setIsLoading(false);
-    //       setTotalCount(Math.ceil(res.data.totalCount / res.data.pageSize));
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     setIsLoading(false);
-    //   });
+
   };
 
   useEffect(() => {

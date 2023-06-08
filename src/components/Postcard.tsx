@@ -81,7 +81,7 @@ export default function Postcard({ data }: { data: typePost[] }) {
               </div>
               {post ? (
                 <Image
-                  src={`http://tech.nextlevelgroup.uz/${post.img}`}
+                  src={`https://tech.nextlevelgroup.uz/${post.img}`}
                   width={100}
                 />
               ) : (
