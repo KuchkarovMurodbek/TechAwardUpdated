@@ -74,7 +74,7 @@ export default function UserTable({
 const getOneUserById = async (id: number) => {
     open();
     await axios
-      .get(`http://tech.nextlevelgroup.uz/api/v1/users/${id}`)
+      .get(`https://tech.nextlevelgroup.uz/api/v1/users/${id}`)
       .then((res) => {
         setGetUserId(res.data);
       })

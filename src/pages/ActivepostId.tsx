@@ -112,7 +112,7 @@ function ActivepostId() {
     setTimeout(() => {
       axios
         .post(
-          `http://tech.nextlevelgroup.uz/api/v1/admin/posts/actived/?is_active=${deIsActive}`,
+          `https://tech.nextlevelgroup.uz/api/v1/admin/posts/actived/?is_active=${deIsActive}`,
           { post_id: oneUser?.id },
           {
             headers: {

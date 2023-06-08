@@ -17,6 +17,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   navbar: {
+    height:'100vh',
     paddingTop: 0,
     "@media (max-width:476px)": {
       height: "100px",
@@ -166,7 +167,7 @@ export const Layout = ({ children }: Props) => {
   return (
     <div className={classes.parentdIv}>
       <Navbar
-        height={800}
+       
         width={{ sm: 200 }}
         px="md"
         className={classes.navbar}

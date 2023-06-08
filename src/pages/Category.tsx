@@ -67,7 +67,7 @@ function Category() {
     setDisableAdd(true)
     await axios
       .post(
-        "http://tech.nextlevelgroup.uz/api/v1/categories",
+        "https://tech.nextlevelgroup.uz/api/v1/categories",
         { name: categoryInput },
         {
           headers: {
@@ -97,7 +97,7 @@ function Category() {
 
   async function DeleteCategory(id: number) {
     await axios
-      .delete(`http://tech.nextlevelgroup.uz/api/v1/categories/${id}`, {
+      .delete(`https://tech.nextlevelgroup.uz/api/v1/categories/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -24,7 +24,7 @@ function Login({}: Props) {
     handlers.open();
 
     await axios
-      .post("http://tech.nextlevelgroup.uz/api/v1/admin/login", {
+      .post("https://tech.nextlevelgroup.uz/api/v1/admin/login", {
         email,
         password,
       })
@@ -33,18 +33,17 @@ function Login({}: Props) {
           setToken(res.data.admin_token);
           setAdminName(res.data.user.email)
           console.log(res.data);
-          
           handlers.close();
         }
       })
       .catch((err) => {
         console.log(err);
-        if (err) {
+        if (err.response.status===400) {
           handlers.close();
           notifications.show({
             title: "Error",
             color: "red",
-            message: "Email or password is wrong",
+            message: `${err.response.data.message}`,
           });
         }
       });

@@ -70,7 +70,7 @@ function Cities() {
     setDisableAdd(true)
     await axios
       .post(
-        "http://tech.nextlevelgroup.uz/api/v1/cities",
+        "https://tech.nextlevelgroup.uz/api/v1/cities",
         { name: handleInput },
         {
           headers: {
@@ -103,7 +103,7 @@ function Cities() {
    
    
     await axios
-      .delete(`http://tech.nextlevelgroup.uz/api/v1/cities/${id}`, {
+      .delete(`https://tech.nextlevelgroup.uz/api/v1/cities/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

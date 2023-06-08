@@ -115,7 +115,7 @@ function PostId() {
     setTimeout(() => {
       axios
         .post(
-          `http://tech.nextlevelgroup.uz/api/v1/admin/posts/actived/?is_active=${isActive}`,
+          `https://tech.nextlevelgroup.uz/api/v1/admin/posts/actived/?is_active=${isActive}`,
           { post_id: oneUser?.id },
           {
             headers: {
@@ -153,7 +153,7 @@ function PostId() {
     setTimeout(() => {
       axios
         .post(
-          "http://tech.nextlevelgroup.uz/api/v1/admin/posts/ignore",
+          "https://tech.nextlevelgroup.uz/api/v1/admin/posts/ignore",
           { post_id: oneUser?.id, user_id: oneUser?.user_id },
           {
             headers: {
