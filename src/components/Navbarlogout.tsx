@@ -1,4 +1,4 @@
-import { Flex, Button, Loader } from "@mantine/core";
+import { Flex, Button } from "@mantine/core";
 import { useLocalStorage } from "@mantine/hooks";
 import { SignOut } from "@phosphor-icons/react";
 import {  useState } from "react";
@@ -43,9 +43,10 @@ function Navbarlogout() {
         radius="xs"
         size="xs"
         uppercase
+        disabled={logLoad?true:false}
       >
         {logLoad ? (
-          <Loader color="light" size="sm" variant="bars" mr={1} />
+          <SignOut size={20} weight="bold"  />
         ) : (
           <SignOut size={20} weight="bold" />
         )}{" "}
