@@ -1,10 +1,4 @@
-import {
-  createStyles,
-  Navbar,
-
-  Badge,
-  rem,
-} from "@mantine/core";
+import { createStyles, Navbar, rem } from "@mantine/core";
 import { Brand } from "./Brand";
 import {
   Checks,
@@ -59,8 +53,6 @@ const useStyles = createStyles((theme) => ({
     paddingBottom: theme.spacing.md,
   },
 
-
-
   mainLinkInner: {
     display: "flex",
     alignItems: "center",
@@ -69,18 +61,17 @@ const useStyles = createStyles((theme) => ({
     padding: `${rem(8)} ${theme.spacing.xs}`,
     borderRadius: theme.radius.sm,
     fontWeight: 500,
-    textDecoration:'none',
-    color:'gray',
+    textDecoration: "none",
+    color: "gray",
     "&:hover": {
       color: "black",
       backgroundColor:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[6]
-        : theme.colors.gray[0],
-  
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[6]
+          : theme.colors.gray[0],
     },
   },
-  activeLink:{
+  activeLink: {
     display: "flex",
     alignItems: "center",
     width: "100%",
@@ -88,18 +79,13 @@ const useStyles = createStyles((theme) => ({
     padding: `${rem(8)} ${theme.spacing.xs}`,
     borderRadius: theme.radius.sm,
     fontWeight: 500,
-    textDecoration:'none',
-    color:'gray',
+    textDecoration: "none",
+    color: "gray",
     backgroundColor:
-    theme.colorScheme === "dark"
-      ? theme.colors.dark[6]
-      : theme.colors.gray[0],
- 
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[6]
+        : theme.colors.gray[0],
   },
-
-
-
-
 }));
 
 interface Props {
@@ -162,15 +148,18 @@ export const Layout = ({ children }: Props) => {
         <Navbar.Section className={classes.section}>
           <div className={classes.mainLinks}>
             {links.map((link) => (
-              <NavLink to={link.link} className={({isActive})=>isActive?classes.activeLink:classes.mainLinkInner} key={link.label}>
+              <NavLink
+                to={link.link}
+                className={({ isActive }) =>
+                  isActive ? classes.activeLink : classes.mainLinkInner
+                }
+                key={link.label}
+              >
                 <span style={{ marginRight: "2px", color: `${link.color}` }}>
                   {link.icon}
                 </span>
                 <span>{link.label}</span>
-               
-          
               </NavLink>
-        
             ))}
           </div>
         </Navbar.Section>
