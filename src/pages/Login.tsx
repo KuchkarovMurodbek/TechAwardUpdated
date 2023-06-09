@@ -17,10 +17,12 @@ type Props = {};
 
 function Login({}: Props) {
   const [visible, handlers] = useDisclosure(false);
-  const [, setToken] = useLocalStorage<string>({ key: "access_token", defaultValue: ""});
-  const [,setAdminName]=useLocalStorage<string>({key:'adminname'})
+  const [, setToken] = useLocalStorage<string>({
+    key: "access_token",
+    defaultValue: "",
+  });
+  const [, setAdminName] = useLocalStorage<string>({ key: "adminname" });
   const handleLoginSubmit = async ({ email, password }: adminType) => {
- 
     handlers.open();
 
     await axios
@@ -31,24 +33,36 @@ function Login({}: Props) {
       .then((res) => {
         if (res.data) {
           setToken(res.data.admin_token);
-          setAdminName(res.data.user.email)
+          setAdminName(res.data.user.email);
           console.log(res.data);
           handlers.close();
         }
       })
       .catch((err) => {
         console.log(err);
-        if (err.response.status===400) {
-          handlers.close();
-          notifications.show({
-            title: "Error",
-            color: "red",
-            message: `${err.response.data.message}`,
-          });
+        switch (err.code) {
+          case "ERR_BAD_REQUEST":
+            handlers.close();
+            notifications.show({
+              title: "Error",
+              color: "red",
+              message: `${err.response.data.message}`,
+            });
+            break;
+          case 'ERR_NETWORK':
+            handlers.close();
+            notifications.show({
+              title: "Error",
+              color: "red",
+              message: `${err.message}`,
+            });
+            break;
+       
         }
+
+     
       });
   };
-
 
   //form submit
   const form = useForm({
@@ -70,7 +84,6 @@ function Login({}: Props) {
   return (
     <>
       <Container size={420} mt={100}>
-      
         <LoadingOverlay visible={visible} overlayBlur={2} />
         <Title
           align="center"
